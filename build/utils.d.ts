@@ -16,4 +16,3 @@ declare namespace Utils {
     function logFullObject(object: any): void;
 }
 export { Utils };
-//# sourceMappingURL=utils.d.ts.map

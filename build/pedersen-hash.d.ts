@@ -4,4 +4,3 @@ declare namespace Pedersen {
     function hash(msg: Buffer): BigInteger;
 }
 export default Pedersen;
-//# sourceMappingURL=pedersen-hash.d.ts.map

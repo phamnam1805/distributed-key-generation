@@ -13,4 +13,3 @@ declare namespace BabyJub {
     function unpackPoint(packedPoint: Buffer): bigInt.BigInteger[];
 }
 export default BabyJub;
-//# sourceMappingURL=babyjub.d.ts.map

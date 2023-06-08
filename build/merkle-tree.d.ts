@@ -5,4 +5,3 @@ declare namespace Tree {
     function getDefaultTree(): MerkleTree;
 }
 export { Tree };
-//# sourceMappingURL=merkle-tree.d.ts.map

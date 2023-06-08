@@ -1,1 +1,0 @@
-{"version":3,"file":"merkle-tree.d.ts","sourceRoot":"","sources":["../src/merkle-tree.ts"],"names":[],"mappings":"AAAA,OAAO,EAEH,UAAU,EAGb,MAAM,mBAAmB,CAAC;AAI3B,kBAAU,IAAI,CAAC;IACX,SAAgB,mBAAmB,CAAC,MAAM,EAAE,MAAM,GAAG,UAAU,CAO9D;IAED,SAAgB,eAAe,CAAC,MAAM,EAAE,MAAM,GAAG,UAAU,CAM1D;IACD,SAAgB,cAAc,IAAI,UAAU,CAE3C;CACJ;AAED,OAAO,EAAE,IAAI,EAAE,CAAC"}

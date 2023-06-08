@@ -126,4 +126,3 @@ declare namespace Voter {
     };
 }
 export { Committee, Voter };
-//# sourceMappingURL=dkg.d.ts.map
