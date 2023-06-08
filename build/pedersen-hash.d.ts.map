@@ -1,0 +1,1 @@
+{"version":3,"file":"pedersen-hash.d.ts","sourceRoot":"","sources":["../src/pedersen-hash.ts"],"names":[],"mappings":";AAEA,OAAe,EAAE,UAAU,EAAa,MAAM,aAAa,CAAC;AAI5D,kBAAU,QAAQ,CAAC;IACf,SAAgB,IAAI,CAAC,GAAG,EAAE,MAAM,GAAG,UAAU,CAG5C;CACJ;AAED,eAAe,QAAQ,CAAC"}

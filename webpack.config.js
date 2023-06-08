@@ -1,5 +1,5 @@
 const path = require("path");
-
+// https://webpack.js.org/configuration/resolve/#resolvefallback
 module.exports = {
     entry: "./src/index.ts",
     module: {
