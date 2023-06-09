@@ -14,8 +14,8 @@ namespace Poseidon {
         // let nInputs = 2;
         // let t = nInputs + 1;
         // let nRoundsP = nRoundsPArr[t - 2];
-        let hashFunction = poseidon.createHash();
-        return hashFunction([left, right]);
+        // let hashFunction = poseidon.createHash();
+        return poseidon([left, right]);
     }
 }
 

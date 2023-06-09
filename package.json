@@ -26,7 +26,7 @@
         "@types/node": "^18.15.11",
         "big-integer": "^1.6.51",
         "bignumber.js": "^9.1.1",
-        "circomlibjs": "git+https://github.com/tornadocash/circomlib.git#c372f14d324d57339c88451834bf2824e73bbdbc",
+        "circomlibjs": "git+https://github.com/tornadocash/circomlib.git#74cef72af30c43ab7789ba25e00031231760866c",
         "fixed-merkle-tree": "^0.7.3",
         "snarkjs": "^0.6.10",
         "ts-node": "^10.9.1",

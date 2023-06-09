@@ -12,8 +12,8 @@ var Poseidon;
         // let nInputs = 2;
         // let t = nInputs + 1;
         // let nRoundsP = nRoundsPArr[t - 2];
-        let hashFunction = circomlibjs_1.poseidon.createHash();
-        return hashFunction([left, right]);
+        // let hashFunction = poseidon.createHash();
+        return (0, circomlibjs_1.poseidon)([left, right]);
     }
     Poseidon.hashLeftRight = hashLeftRight;
 })(Poseidon || (Poseidon = {}));
