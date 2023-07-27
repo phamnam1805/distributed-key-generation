@@ -1,20 +1,44 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore
 const circomlibjs_1 = require("circomlibjs");
+// @ts-ignore
+const genPoseidonContract = __importStar(require("circomlibjs/src/poseidon_gencontract"));
 var Poseidon;
 (function (Poseidon) {
     function hashLeftRight(left, right) {
-        // let nRoundsF = 8;
-        // let nRoundsPArr = [
-        //     56, 57, 56, 60, 60, 63, 64, 63, 60, 66, 60, 65, 70, 60, 64, 68
-        // ];
-        // let nInputs = 2;
-        // let t = nInputs + 1;
-        // let nRoundsP = nRoundsPArr[t - 2];
-        // let hashFunction = poseidon.createHash();
         return (0, circomlibjs_1.poseidon)([left, right]);
     }
     Poseidon.hashLeftRight = hashLeftRight;
+    function getPoseidonContract() {
+        return {
+            abi: genPoseidonContract.abi,
+            code: genPoseidonContract.createCode(2),
+        };
+    }
+    Poseidon.getPoseidonContract = getPoseidonContract;
 })(Poseidon || (Poseidon = {}));
 exports.default = Poseidon;

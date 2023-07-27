@@ -1,14 +1,11 @@
 import { BigInteger } from "big-integer";
 import { Element } from "fixed-merkle-tree";
 declare namespace Committee {
-    function getRandomPolynomial(participantIndex: number, t: number, n: number): {
+    function getRandomPolynomial(t: number, n: number): {
         C: Array<BigInt[]>;
+        a: Array<BigInt>;
         a0: BigInt;
         f: any;
-        secret: {
-            i: number;
-            "f(i)": BigInt;
-        };
     };
     function getRound2Contribution(receiverIndex: number, receiverPublicKey: Array<BigInt>, C: Array<BigInt[]>, f: BigInt): {
         ciphers: BigInt[];
@@ -66,9 +63,11 @@ declare namespace Committee {
         R: BigInt[][];
         M: BigInt[][];
     };
-    function getTallyContribution(privateKey: BigInt, f: BigInt, u: Array<BigInt[]>, c: Array<BigInt>, R: Array<BigInt[]>): {
+    function getTallyContribution(senderIndex: number, C: Array<BigInt[]>, privateKey: BigInt, f: BigInt, u: Array<BigInt[]>, c: Array<BigInt>, R: Array<BigInt[]>): {
         D: BigInt[][];
         circuitInput: {
+            senderIndex: number;
+            C: BigInt[][];
             u: BigInt[][];
             c: BigInt[];
             decryptedF: BigInt[];

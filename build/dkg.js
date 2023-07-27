@@ -17,33 +17,24 @@ var Committee;
         }
         return result.mod(babyjub_1.default.subOrder);
     }
-    function getRandomPolynomial(participantIndex, t, n) {
+    function getRandomPolynomial(t, n) {
         let result = {
             C: new Array(),
+            a: new Array(),
             a0: 0n,
             f: {},
-            secret: { i: 0, "f(i)": 0n },
         };
         let a = new Array(t);
         for (let i = 0; i < t; i++) {
             a[i] = utils_1.Utils.getRandomBytes(32).mod(babyjub_1.default.subOrder);
             let Ci = babyjub_1.default.mulPointBaseScalar(a[i]);
             result.C.push(utils_1.Utils.getBigIntArray(Ci));
+            result.a.push(utils_1.Utils.getBigInt(a[i]));
         }
         result.a0 = utils_1.Utils.getBigInt(a[0]);
-        let f = new Array(n);
         for (let i = 0; i < n; i++) {
             let x = i + 1;
-            f[i] = calculatePolynomialValue(a, t, x);
-            if (x != participantIndex) {
-                result.f[x] = utils_1.Utils.getBigInt(f[i]);
-            }
-            else {
-                result.secret = {
-                    i: x,
-                    "f(i)": utils_1.Utils.getBigInt(f[i]),
-                };
-            }
+            result.f[x] = utils_1.Utils.getBigInt(calculatePolynomialValue(a, t, x));
         }
         return result;
     }
@@ -221,7 +212,7 @@ var Committee;
         return result;
     }
     Committee.accumulateFund = accumulateFund;
-    function getTallyContribution(privateKey, f, u, c, R) {
+    function getTallyContribution(senderIndex, C, privateKey, f, u, c, R) {
         let decryptedF = new Array();
         for (let i = 0; i < u.length; i++) {
             let plain = elgamalDecrypt(privateKey, u[i], c[i]);
@@ -236,6 +227,8 @@ var Committee;
         let result = {
             D: D,
             circuitInput: {
+                senderIndex: senderIndex,
+                C: C,
                 u: u,
                 c: c,
                 decryptedF: decryptedF,

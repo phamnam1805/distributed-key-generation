@@ -42,11 +42,9 @@ namespace Committee {
 
         result.a0 = Utils.getBigInt(a[0]);
 
-        let f = new Array<BigInteger>(n);
         for (let i = 0; i < n; i++) {
             let x = i + 1;
-            f[i] = calculatePolynomialValue(a, t, x);
-            result.f[i] = Utils.getBigInt(f[i]);
+            result.f[x] = Utils.getBigInt(calculatePolynomialValue(a, t, x));
         }
         return result;
     }
@@ -275,6 +273,8 @@ namespace Committee {
     }
 
     export function getTallyContribution(
+        senderIndex: number,
+        C: Array<BigInt[]>,
         privateKey: BigInt,
         f: BigInt,
         u: Array<BigInt[]>,
@@ -300,6 +300,8 @@ namespace Committee {
         let result = {
             D: D,
             circuitInput: {
+                senderIndex: senderIndex,
+                C: C,
                 u: u,
                 c: c,
                 decryptedF: decryptedF,
