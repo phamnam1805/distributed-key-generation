@@ -20,30 +20,24 @@ namespace Committee {
         return result.mod(BabyJub.subOrder);
     }
 
-    export function getRandomPolynomial(
-        participantIndex: number,
-        t: number,
-        n: number
-    ) {
+    export function getRandomPolynomial(t: number, n: number) {
         let result: {
             C: Array<BigInt[]>;
+            a: Array<BigInt>;
             a0: BigInt;
             f: any;
-            secret: {
-                i: number;
-                "f(i)": BigInt;
-            };
         } = {
             C: new Array<BigInt[]>(),
+            a: new Array<BigInt>(),
             a0: 0n,
             f: {},
-            secret: { i: 0, "f(i)": 0n },
         };
         let a = new Array<BigInteger>(t);
         for (let i = 0; i < t; i++) {
             a[i] = Utils.getRandomBytes(32).mod(BabyJub.subOrder);
             let Ci: BigInteger[] = BabyJub.mulPointBaseScalar(a[i]);
             result.C.push(Utils.getBigIntArray(Ci));
+            result.a.push(Utils.getBigInt(a[i]));
         }
 
         result.a0 = Utils.getBigInt(a[0]);
@@ -52,14 +46,7 @@ namespace Committee {
         for (let i = 0; i < n; i++) {
             let x = i + 1;
             f[i] = calculatePolynomialValue(a, t, x);
-            if (x != participantIndex) {
-                result.f[x] = Utils.getBigInt(f[i]);
-            } else {
-                result.secret = {
-                    i: x,
-                    "f(i)": Utils.getBigInt(f[i]),
-                };
-            }
+            result.f[i] = Utils.getBigInt(f[i]);
         }
         return result;
     }
